@@ -56,5 +56,4 @@ public class mergeSort {
             System.out.print(arr[i]+" ");
         }
     }
-    
 }
