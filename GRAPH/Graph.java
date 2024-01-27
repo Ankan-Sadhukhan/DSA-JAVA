@@ -35,14 +35,33 @@ public class Graph {
         }
     }
 
+    public void dfs(int src){
+        HashMap<Integer,Boolean> visited = new HashMap<>();
+        dfsHelper(src, visited);
+    }
+
+    private void dfsHelper(int src, HashMap<Integer, Boolean> visited) {
+        visited.put(src,true);
+        System.out.print(src +" ");
+
+        for(int neighbour:adj[src]){
+            if(!visited.containsKey(neighbour)){
+                dfsHelper(neighbour, visited);
+            }
+            
+        }
+    }
+
     public static void main(String[] args) {
         Graph g = new Graph(10);
 
-        g.addEdge(0, 1, false);
+        g.addEdge(0, 1, true);
         g.addEdge(1, 3, true);
         g.addEdge(2, 4, true);
-        g.addEdge(3, 4, false);
-        g.printAdjList();
+        g.addEdge(3, 4, true);
+        g.addEdge(2, 5, true);
+//        g.printAdjList();
+        g.dfs(0);
 
     }
 }
